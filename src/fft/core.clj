@@ -5,20 +5,20 @@
 (def i (complex 0 1))
 
 (defn fft
-  [s]
-  (def N (count s))
+  [samples]
+  (def length (count samples))
   [(reduce
      +
      (map-indexed
        (fn
-         [idx itm]
-         (* itm
+         [idx sample]
+         (* sample
             (exp
               (-
                (*
                 (/
                  (* 2 Math/PI i)
-                 N)
+                 length)
                 idx 0)
                ))))
-       s))])
+       samples))])
