@@ -8,11 +8,10 @@
 (deftest calculates_fft
   (are [x y] (= x y) 
        (fft [0]) [(complex 0 0)]
-       ;(fft [1]) [(complex 1 0)]
-       ))
+       (fft [1]) [(complex 1 0)]
 
-      ; (fft [1 0]) [(complex 1 0) (complex  1 0)]
-      ; (fft [0 1]) [(complex 1 0) (complex -1 0)]
+       (fft [1 0]) [(complex 1 0) (complex  1 0)]
+       (fft [0 1]) [(complex 1 0) (complex -1 0)]))
 
       ; (fft [0 1 2 3])
       ; [(complex  6  0)

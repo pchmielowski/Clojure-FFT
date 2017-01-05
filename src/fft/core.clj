@@ -7,18 +7,23 @@
 (defn fft
   [samples]
   (def length (count samples))
-  [(reduce
-     +
-     (map-indexed
-       (fn
-         [idx sample]
-         (* sample
-            (exp
-              (-
-               (*
-                (/
-                 (* 2 Math/PI i)
-                 length)
-                idx 0)
-               ))))
-       samples))])
+  (map-indexed
+    (fn [outerIdx value]
+      (reduce
+        +
+        (map-indexed
+          (fn
+            [idx sample]
+            (* sample
+               (exp
+                 (-
+                  (*
+                   (/
+                    (* 2 Math/PI i)
+                    length)
+                   idx outerIdx)))))
+          samples))
+      )
+    samples
+    )
+  )
