@@ -4,7 +4,7 @@
 
 (def i (complex 0 1))
 
-(defn fft
+(defn dft
   [samples]
   (def length (count samples))
   (map-indexed
@@ -27,3 +27,5 @@
     samples
     )
   )
+
+(defn fft [samples] (dft samples))
