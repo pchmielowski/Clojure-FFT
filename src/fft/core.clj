@@ -36,10 +36,11 @@
     (* sample
        (exp
          (-
-          (/
-           (* 2 Math/PI i)
-           length)
-          idx))))
+          (*
+           (/
+            (* 2 Math/PI i)
+            length)
+           idx)))))
   (defn evn [input] (take-nth 2 input))
   (defn odd [input] (take-nth 2 (rest input)))
   (defn twotimes [input] (reduce into (repeat 2 input)))
