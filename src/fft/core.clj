@@ -53,8 +53,3 @@
         rotate
         (twotimes
           (dft (odd samples)))))))
-
-(println "FFT")
-(println (fft [0 1]))
-(println "DFT")
-(println (dft [0 1]))
