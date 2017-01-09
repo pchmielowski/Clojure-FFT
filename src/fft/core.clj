@@ -36,7 +36,6 @@
   [N]
   (defn rotate-sample
     [idx sample]
-    (printf "%s of %s %s\n" idx N sample)
     (*
       sample
       (exp
@@ -45,16 +44,10 @@
           N)))))
 
 (defn twotimes [input]
-  (printf "in: %s\n" input)
-  (def
-    retval
-    (reduce into (repeat 2 input)))
-  (printf "out: %s\n" retval)
-  retval)
+  (reduce into (repeat 2 input)))
 
 (defn rotate-vector
   [vector N]
-  (show vector "")
   (map-indexed
     (make-rotating-function N)
     vector))
