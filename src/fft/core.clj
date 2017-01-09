@@ -6,8 +6,8 @@
 (def i (complex 0 1))
 
 (defn dft
-  [samples]
-  (def length (count samples))
+  [smpls]
+  (def len (count smpls))
   (map-indexed
     (fn [outerIdx value]
       (reduce
@@ -18,14 +18,14 @@
             (* sample
                (exp
                  (-
-                  (*
-                   (/
-                    (* 2 Math/PI i)
-                    length)
-                   idx outerIdx)))))
-          samples))
+                   (*
+                     (/
+                       (* 2 Math/PI i)
+                       len)
+                     idx outerIdx)))))
+          smpls))
       )
-    samples
+    smpls
     )
   )
 
@@ -35,11 +35,11 @@
   (defn rotate
     [idx sample]
     (*
-     sample
-     (exp
-       (/
-        (* -2 Math/PI i idx)
-        length))))
+      sample
+      (exp
+        (/
+          (* -2 Math/PI i idx)
+          length))))
   (defn evn [input] (take-nth 2 input))
   (defn odd [input] (take-nth 2 (rest input)))
   (defn twotimes [input] (reduce into (repeat 2 input)))
