@@ -25,13 +25,44 @@
                [(complex 1 0)])))
   (is (true? (cmp
                (fft [1 0])
-               [(complex 1 0) (complex  1 0)])))
+               [(complex 1 0) (complex 1 0)])))
   (is (true? (cmp
                (fft [0 1])
                [(complex 1 0) (complex -1 0)])))
   (is (true? (cmp
                (fft [0 1 2 3])
-               [(complex  6  0)
-                (complex -2  2)
-                (complex -2  0)
-                (complex -2 -2)]))))
+               [(complex 6 0)
+                (complex -2 2)
+                (complex -2 0)
+                (complex -2 -2)])))
+  (def input
+    [(complex 0 0)
+     (complex 1 0)
+     (complex 2 0)
+     (complex 3 0)])
+  (def output
+    [(complex 4 0)
+     (complex -2 0)
+     (complex 4 0)
+     (complex -2 0)])
+
+  (is (cmp
+        (twotimes [(complex 4 0) (complex -2 0)])
+        output))
+
+  (is (cmp
+        (dft
+          [(complex 1 0) (complex 3 0)])
+        [(complex 4 0) (complex -2 0)]))
+
+  (is (cmp
+        (twotimes
+          (dft
+            [(complex 1 0) (complex 3 0)]))
+        output))
+  (is (cmp
+        (twotimes
+          (dft
+            (odd input)))
+        output)))
+
