@@ -2,11 +2,6 @@
   (:use [complex.core])
   (:require [clojure.math.numeric-tower :as math]))
 
-(defn show [input ch]
-  (doseq [x input] (printf (str ch "%s\n") x))
-  (println))
-(def i (complex 0 1))
-
 (defn dft
   [smpls]
   (def len (count smpls))
