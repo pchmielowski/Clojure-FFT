@@ -39,9 +39,33 @@
          (complex -2 2)
          (complex -2 0)
          (complex -2 -2)]))
-
   (is (cmp
         (fft [0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3])
+        [(complex 24 0) (complex 0 0) (complex 0 0) (complex 0 0) (complex -8 8) (complex 0 0) (complex 0 0) (complex 0 0)
+         (complex -8 0) (complex 0 0) (complex 0 0) (complex 0 0) (complex -8 -8) (complex 0 0) (complex 0 0) (complex 0 0)]))
+  )
+
+(deftest calculates_dft
+  (is (cmp
+        (dft [0])
+        [(complex 0 0)]))
+  (is (cmp
+        (dft [1])
+        [(complex 1 0)]))
+  (is (cmp
+        (dft [1 0])
+        [(complex 1 0) (complex 1 0)]))
+  (is (cmp
+        (dft [0 1])
+        [(complex 1 0) (complex -1 0)]))
+  (is (cmp
+        (dft [0 1 2 3])
+        [(complex 6 0)
+         (complex -2 2)
+         (complex -2 0)
+         (complex -2 -2)]))
+  (is (cmp
+        (dft [0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3])
         [(complex 24 0) (complex 0 0) (complex 0 0) (complex 0 0) (complex -8 8) (complex 0 0) (complex 0 0) (complex 0 0)
          (complex -8 0) (complex 0 0) (complex 0 0) (complex 0 0) (complex -8 -8) (complex 0 0) (complex 0 0) (complex 0 0)]))
   )
