@@ -9,12 +9,14 @@
   cmp
   "Compares collections of Complex numbers"
   [a b]
-  (every?
-    true?
-    (map-indexed
-      (fn [idx itm]
-        (equals itm (nth a idx) 0.1))
-      b)))
+  (and
+    (= (type a) (type b))
+    (every?
+      true?
+      (map-indexed
+        (fn [idx itm]
+          (equals itm (nth a idx) 0.1))
+        b))))
 
 (deftest calculates_fft
   (is (cmp
