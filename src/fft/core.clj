@@ -47,10 +47,11 @@
   (reduce into (repeat 2 input)))
 
 (defn rotate-vector
-  [vector N]
-  (map-indexed
-    (make-rotating-function N)
-    vector))
+  [vector N]                                                ; TODO: calculate N by yourself
+  (vec
+    (map-indexed
+      (make-rotating-function N)
+      vector)))
 
 (defn evn [input] (take-nth 2 input))
 (defn odd [input] (take-nth 2 (rest input)))
