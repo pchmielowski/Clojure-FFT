@@ -9,6 +9,8 @@
   cmp
   "Compares collections of Complex numbers"
   [a b]
+  (if (not= (count a) (count b))
+    (throw (Exception. (format "Lenghts mismatch: %d != %d" (count a) (count b)))))
   (and
     (= (type a) (type b))
     (every?
