@@ -47,10 +47,10 @@
   (reduce into (repeat 2 input)))
 
 (defn rotate-vector
-  [vector N]                                                ; TODO: calculate N by yourself
+  [vector]
   (vec
     (map-indexed
-      (make-rotating-function N)
+      (make-rotating-function (count vector))
       vector)))
 
 (defn evn [input] (take-nth 2 input))
@@ -66,8 +66,7 @@
       (map
         +
         (twotimes
-          (dft (evn samples)))
+          (fft (evn samples)))
         (rotate-vector
           (twotimes
-            (dft (odd samples)))
-          length)))))
+            (fft (odd samples))))))))
