@@ -2,6 +2,8 @@
   (:use [complex.core])
   (:require [clojure.math.numeric-tower :as math]))
 
+(def i (complex 0 1))
+
 (defn dft
   [smpls]
   (def len (count smpls))
