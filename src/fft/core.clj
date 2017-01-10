@@ -58,14 +58,15 @@
 (defn fft
   [samples]
   (def length (count samples))
-  (if
-    (= length 1)
-    (map (fn [s] (complex s)) samples)
-    (map
-      +
-      (twotimes
-        (dft (evn samples)))
-      (rotate-vector
+  (vec
+    (if
+      (= length 1)
+      (map (fn [s] (complex s)) samples)
+      (map
+        +
         (twotimes
-          (dft (odd samples)))
-        length))))
+          (dft (evn samples)))
+        (rotate-vector
+          (twotimes
+            (dft (odd samples)))
+          length)))))
