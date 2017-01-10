@@ -8,26 +8,21 @@
   [smpls]
   (def len (count smpls))
   (vec
-    (map-indexed
-      (fn [outerIdx value]
+    (map
+      (fn [k]
         (reduce
           +
           (map-indexed
             (fn
-              [idx sample]
+              [n sample]
               (* sample
-                 (exp
-                   (-
-                     (*
-                       (/
-                         (* 2 Math/PI i)
-                         len)
-                       idx outerIdx)))))
-            smpls))
-        )
-      smpls
-      ))
-  )
+                 (exp (- (*
+                           (/
+                             (* 2 Math/PI i)
+                             len)
+                           n k)))))
+            smpls)))
+      (range len))))
 
 (defn make-rotating-function
   [N]
