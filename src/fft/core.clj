@@ -26,7 +26,7 @@
 
 (defn make-rotating-function
   [N]
-  (defn rotate-sample
+  (fn
     [idx sample]
     (*
       sample
